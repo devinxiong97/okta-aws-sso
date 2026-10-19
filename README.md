@@ -51,8 +51,8 @@ User ──▶ Okta (login + MFA) ──SAML──▶ AWS IAM Identity Center �
 |---|---|---|
 | 0 | Get a business email for the Okta signup | ✅ Done |
 | 1 | Create a free Okta developer org | ✅ Done |
-| 2 | Turn on AWS Organizations and IAM Identity Center | ⏳ Next |
-| 3 | Add the AWS IAM Identity Center app in Okta | |
+| 2 | Turn on AWS Organizations and IAM Identity Center | ✅ Done |
+| 3 | Add the AWS IAM Identity Center app in Okta | ⏳ Next |
 | 4 | Exchange SAML metadata (set up the login trust) | |
 | 5 | Turn on SCIM provisioning | |
 | 6 | Create Okta groups and push them to AWS | |
@@ -66,5 +66,7 @@ User ──▶ Okta (login + MFA) ──SAML──▶ AWS IAM Identity Center �
 - **A separate Okta org just for this project.** A personal AWS account should never be connected to an employer's identity provider.
 - **Least privilege from day one.** Read-only is the default; admin is a separate group.
 - **Offboarding is part of the test plan,** not an afterthought. Removing a user in Okta must remove their AWS access.
+
+**Next ideas:** an SCP that blocks member accounts from creating their own Identity Center instances, and a dedicated member account for workloads.
 
 **Cost:** $0. Okta's free developer plan, AWS Organizations, and IAM Identity Center are all free.
