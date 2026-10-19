@@ -52,8 +52,8 @@ User ──▶ Okta (login + MFA) ──SAML──▶ AWS IAM Identity Center �
 | 0 | Get a business email for the Okta signup | ✅ Done |
 | 1 | Create a free Okta developer org | ✅ Done |
 | 2 | Turn on AWS Organizations and IAM Identity Center | ✅ Done |
-| 3 | Add the AWS IAM Identity Center app in Okta | ⏳ Next |
-| 4 | Exchange SAML metadata (set up the login trust) | |
+| 3 | Add the AWS IAM Identity Center app in Okta | ✅ Done |
+| 4 | Exchange SAML metadata (set up the login trust) | ⏳ Next |
 | 5 | Turn on SCIM provisioning | |
 | 6 | Create Okta groups and push them to AWS | |
 | 7 | Create permission sets and assign them to groups | |
