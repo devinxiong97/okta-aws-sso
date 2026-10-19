@@ -34,6 +34,27 @@ Every step of connecting Okta to AWS, in order: what I did, why, the technical d
 
 ---
 
-## Step 2 — Turn on AWS Organizations and IAM Identity Center
+## Step 2 — Turn on AWS Organizations and IAM Identity Center (2026-10-19)
+
+**What I did:** Enabled **IAM Identity Center** as an **organization instance** in **us-east-2 (Ohio)**. That also turned on **AWS Organizations**, which made my account the organization's management account.
+
+**Decisions I made on the setup screen:**
+
+| Choice | What I picked | Why |
+|---|---|---|
+| Instance type | **Organization instance** | An account instance can't grant access to AWS accounts, only to some applications, so SSO into AWS wouldn't work |
+| Region setup | **Single-Region**, not the default Multi-Region | The default encrypts with a customer managed KMS key replicated to a second region, which bills monthly. Single-Region uses an AWS owned key at no cost. Multi-region resilience matters for a company workforce, not a one-person lab |
+| Home region | **us-east-2** | Same region as the rest of my AWS work. The home region is effectively permanent |
+
+**What I learned:**
+- **Read the defaults before clicking Enable.** The default option would have added a small recurring KMS charge. The warning was on the screen, but easy to miss.
+- **Management account best practice:** AWS recommends keeping workloads out of the management account, so a compromised workload can't reach billing or identity controls. My site lives in this account, which is fine for a lab. In a company, workloads go in separate member accounts.
+- **Identity source starts as "Identity Center directory,"** meaning AWS stores the users itself. Step 4 switches it to an external identity provider (Okta). That switch is the core of the project: Okta becomes the single source of truth.
+- **Account instances can bypass central control.** Member accounts can create their own Identity Center instance unless an SCP prevents it. Added to the roadmap.
+- **The AWS access portal URL** (`https://d-xxxxxxxxxx.awsapps.com/start`) is the sign-in page users land on after Okta.
+
+---
+
+## Step 3 — Add the AWS IAM Identity Center app in Okta
 
 *In progress.*
