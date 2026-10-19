@@ -55,6 +55,25 @@ Every step of connecting Okta to AWS, in order: what I did, why, the technical d
 
 ---
 
-## Step 3 — Add the AWS IAM Identity Center app in Okta
+## Step 3 — Add the AWS IAM Identity Center app in Okta (2026-10-19)
+
+**What I did:** In the Okta Admin Console, went to **Applications → Browse App Catalog**, found **AWS IAM Identity Center** in the **Okta Integration Network (OIN)**, and added it. The app is **Active**, with no users assigned yet.
+
+**Why the catalog app:** OIN apps are pre-built, vendor-maintained integrations. AWS's already knows the SAML format and SCIM endpoints AWS expects, so there's nothing custom to build or maintain. I skipped two look-alikes:
+- **"AWS SSO"** is the old name for the same service.
+- **"AWS Account Federation"** is an older method that federates straight into IAM roles in each account. Identity Center is the current, centralized way.
+
+**How the app's tabs map to the plan:**
+
+| Tab | What it controls | Step |
+|---|---|---|
+| **Sign On** | SAML: the login trust between Okta and AWS | 4 |
+| **Provisioning** | SCIM: creating and removing users in AWS automatically | 5 |
+| **Assignments** | Which people or groups get the AWS tile | 6 |
+| **Push Groups** | Which Okta groups get copied into AWS | 6 |
+
+---
+
+## Step 4 — Exchange SAML metadata (set up the login trust)
 
 *In progress.*
